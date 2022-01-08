@@ -21,9 +21,14 @@ public class EmployeeController {
     public String saveEmployee(@RequestBody Employee e) {
         return employeeService.saveEmployee(e);
     }
+ }
 
-    @PutMapping("/employee")
-    public String updateEmployee(@RequestBody Employee e) {return employeeService.updateEmployee(e); }
+//    @PutMapping("/employee")
+//    public String updateEmployee(@RequestBody Employee e) {return employeeService.updateEmployee(e); }
+
+    @PutMapping("/employee/{id}")
+    public String updateEmployee(@RequestBody Employee e, @PathVariable String id) {return employeeService.updateEmployee(e, id); }
+
 
     @DeleteMapping("/employee/{id}")
     public String deleteEmployee(@PathVariable String id) {
