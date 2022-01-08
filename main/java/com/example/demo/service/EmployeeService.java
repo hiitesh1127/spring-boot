@@ -26,9 +26,12 @@ public class EmployeeService {
         }
     }
 
-    public String updateEmployee(Employee e) {
-
-                Optional<Employee> emp = employeeRepository.findById(e.getId());
+    
+    //if we get only updated fields from frontend
+    /*
+    public String updateEmployee(Employee e, String id) {
+                System.out.println("id " + id);
+                Optional<Employee> emp = employeeRepository.findById(id);
 
                 if(emp.isPresent()) {
                     Employee newEmployee = emp.get();
@@ -43,10 +46,22 @@ public class EmployeeService {
                     return "Employee Successfully Updated";
                 }
 
+
         return "Employee Not found";
 
     }
+    */
 
+    // if we get full updated object from frontend
+    public String updateEmployee(Employee e, String id) {
+        if(employeeRepository.existsById(id)) {
+            e.setId(id);
+            employeeRepository.save(e);
+            return "Employee Successfully Updated!";
+        } else {
+            return "Employee not Exist!";
+        }
+    }
     public String deleteEmployee(String id) {
         if(employeeRepository.existsById(id)) {
             employeeRepository.deleteById(id);
