@@ -5,15 +5,16 @@ Spring Boot Task 3
 3. Role Based Authentication
 
 
-```
-Basic Auth Credentials
+*Basic Auth Credentials*
 
-admin : {
+```json
+"admin" : {
   "username" : "admin",
   "password" : "asdf"
 }
-
-user : {
+```
+```json
+"user" : {
   "username" : "user",
   "password" : "asdf"
 }
