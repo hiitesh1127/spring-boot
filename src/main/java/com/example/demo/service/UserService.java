@@ -20,6 +20,21 @@ public class UserService {
     public List<User> getUsers() {
         return userRepository.findAll();
     }
+    
+    public String saveUser(User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+        return "User Saved";
+    }
+
+    public String deleteUser(int id) {
+        if(userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+            return "User deleted Successfully";
+        } else {
+            return "User does not Exist";
+        }
+    }
 
     public Optional<User> getUserByUsername(String username) {
         return userRepository.findByUserName(username);
