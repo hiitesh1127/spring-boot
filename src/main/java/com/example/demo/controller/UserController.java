@@ -20,5 +20,15 @@ public class UserController {
     public List<User> getUsers() {
         return userService.getUsers();
     }
+    
+    @PostMapping("/user")
+    public String saveUser(@RequestBody User user){
+        return userService.saveUser(user);
+    }
+
+    @DeleteMapping("/user/{id}")
+    public String deleteUser(@PathVariable int id) {
+        return userService.deleteUser(id);
+    }
 
 }
